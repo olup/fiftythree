@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 // Imports pour l'interface
-import { Button, Paper, Typography, CircularProgress } from "@material-ui/core";
+import { Paper, Typography, CircularProgress } from "@material-ui/core";
 import ConfirmIcon from "@material-ui/icons/PhonelinkLock";
 import PinInput from "react-pin-input";
 import fetch, { apiOptions } from "../../api";

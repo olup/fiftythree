@@ -5,6 +5,7 @@
   "dependencies": {
     "@material-ui/core": "^1.4.0",
     "@material-ui/icons": "^1.1.0",
+    "moment": "^2.22.2",
     "normalize.css": "^8.0.0",
     "react": "^16.4.1",
     "react-circular-progressbar": "^1.0.0",

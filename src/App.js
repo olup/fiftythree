@@ -6,11 +6,12 @@ import BottomNavigation from "@material-ui/core/BottomNavigation";
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
 import KeyIcon from "@material-ui/icons/VpnKey";
 import ContactsIcon from "@material-ui/icons/Contacts";
-import SettingsIcon from "@material-ui/icons/Settings";
+import BoardIcon from "@material-ui/icons/ViewAgenda";
 
 // imports des pages
 import Door from "./Containers/Door";
 import Contacts from "./Containers/Contacts";
+import Board from "./Containers/Board";
 import Pair from "./Containers/Pair";
 
 // On peut aussi importer des css comme cela
@@ -44,6 +45,7 @@ class App extends Component {
           {/* Les deux première routes sont privées : il faut une association pour y acceder */}
           <PrivateRoute path="/door" component={Door} />
           <PrivateRoute path="/contacts" component={Contacts} />
+          <PrivateRoute path="/board" component={Board} />
           <Route path="/pair" component={Pair} />
         </div>
 
@@ -64,9 +66,11 @@ class App extends Component {
             to="/contacts"
           />
           <BottomNavigationAction
-            label="Paramètres"
-            value="settings"
-            icon={<SettingsIcon />}
+            label="Fil"
+            value="/board"
+            icon={<BoardIcon />}
+            component={Link}
+            to="/board"
           />
         </BottomNavigation>
         {/*Par default, rediriger vers /door */}

@@ -3,7 +3,6 @@
 import React, { Component } from "react";
 // Imports pour l'interface
 import {
-  Button,
   ListItem,
   ListItemText,
   ListItemSecondaryAction,
@@ -21,15 +20,19 @@ const Line = ({ name, status, id, phone, email }) => (
     <ListItemSecondaryAction>
       {/* Ce passage ne s'affichera que si la valeur phone est renseignée à l'appel du composant */}
       {phone && (
-        <IconButton aria-label="Comments">
-          <PhoneIcon />
-        </IconButton>
+        <a href={`tel:${phone}`}>
+          <IconButton aria-label="Comments">
+            <PhoneIcon />
+          </IconButton>
+        </a>
       )}
       {/* Ce passage ne s'affichera que si la valeur email est renseignée à l'appel du composant */}
       {email && (
-        <IconButton aria-label="Comments">
-          <MailIcon />
-        </IconButton>
+        <a href={`mailto:${email}`}>
+          <IconButton aria-label="Comments">
+            <MailIcon />
+          </IconButton>
+        </a>
       )}
     </ListItemSecondaryAction>
   </ListItem>
@@ -69,14 +72,6 @@ export default class Contacts extends Component {
               status="Locataire immeuble B"
               email="roland@gmail.com"
             />
-            {[...Array(300)].map((n, index) => (
-              <Line
-                name={"poeple " + index}
-                status={"C'est la personne " + index}
-                id={index}
-                key={index}
-              />
-            ))}
           </List>
         </div>
       </div>

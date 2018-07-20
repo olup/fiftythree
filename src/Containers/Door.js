@@ -5,7 +5,7 @@
 import fetch from "../api";
 import React, { Component } from "react";
 // Imports pour l'interface
-import { Button, Paper, Typography, CircularProgress } from "@material-ui/core";
+import { Button, Paper, Typography } from "@material-ui/core";
 import ErrorIcon from "@material-ui/icons/ErrorOutline";
 import CircularProgressbar from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
@@ -21,31 +21,32 @@ const prettifyTime = millis => {
 export default class Door extends Component {
   state = {
     remaining: 0,
-    remainingTime: 0,
-    lastInterval: null
+    remainingTime: 0
   };
+  componentWillUnmount() {
+    window.clearInterval(this.state.lastInterval);
+  }
   openDoor = timing => {
     if (!timing) timing = 60000;
     fetch("/door/open/" + (timing || "")).then(r => {
       console.log(r);
-      window.clearInterval(this.state.lastInterval);
+      clearInterval(this.lastInterval);
 
       this.setState({ remaining: 100, remainingTime: timing });
 
       const step = 100;
       const unit = 100 / (timing / step);
 
-      const interval = setInterval(() => {
+      this.lastInterval = setInterval(() => {
         this.setState({
           remaining: this.state.remaining - unit,
           remainingTime: this.state.remainingTime - step
         });
         if (this.state.remaining < 0) {
           this.setState({ remaining: 0, remainingTime: 0 });
-          window.clearInterval(interval);
+          clearInterval(this.lastInterval);
         }
       }, step);
-      this.setState({ lastInterval: interval });
     });
   };
   render() {

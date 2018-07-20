@@ -5,7 +5,7 @@ let config = {
 
 if (process.env.NODE_ENV === "production") {
   config = {
-    apiHost: "http://myRemoteIp:MyRemotePort",
+    apiHost: "https://fiftythree-server-jmwcnzhftq.now.sh",
     env: "production"
   };
 }
