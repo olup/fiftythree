@@ -1,3 +1,17 @@
+# Fiftythree client app
+
+## Getting started
+
+Clone repo with `git clone https://github.com/olup/fiftythree.git`
+
+Cd to the directory and then install deps with `npm install`
+
+Then, you can start the server with `npm start`
+
+Make sure that the apiHost in the config file points to you development server (default : http://localhost:5050)
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
