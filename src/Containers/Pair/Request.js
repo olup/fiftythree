@@ -19,7 +19,7 @@ class Request extends Component {
   componentDidMount = () => {
     this.setState({
       email: localStorage.getItem("email"),
-      previouslySet: true
+      previouslySet: !!localStorage.getItem("email")
     });
   };
   request = () => {
@@ -78,7 +78,7 @@ class Request extends Component {
         >
           Associer
         </Button>
-        {previouslySet && (
+        {!!previouslySet && (
           <Button
             color="primary"
             onClick={() => this.props.history.push("/pair/confirm")}
